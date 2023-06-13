@@ -1,0 +1,53 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MathGame extends JFrame {
+    private JLabel nameLabel;
+    private JTextField nameField;
+    private JButton startButton;
+    private JComboBox<String> levelComboBox;
+    
+    public MathGame() {
+        setTitle("Math Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        
+        nameLabel = new JLabel("Nombre:");
+        nameField = new JTextField(15);
+        startButton = new JButton("Iniciar");
+        
+        String[] levels = {"Fácil", "Intermedio", "Difícil"};
+        levelComboBox = new JComboBox<>(levels);
+        
+        startButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String level = (String) levelComboBox.getSelectedItem();
+                startModule(name, level);
+            }
+        });
+        
+        add(nameLabel);
+        add(nameField);
+        add(levelComboBox);
+        add(startButton);
+        
+        pack();
+        setVisible(true);
+    }
+    
+    private void startModule(String name, String level) {
+        // Lógica para iniciar el módulo seleccionado
+        // Aquí puedes implementar las preguntas y los niveles de dificultad
+        // según las reglas del juego que has descrito
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MathGame();
+            }
+        });
+    }
+}
